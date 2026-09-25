@@ -1,0 +1,75 @@
+Partie 1 - Comprendre le routage
+
+Question 1:
+-Program.cs : configure et démarre l'application, notamment le routage.
+-Controllers : contient les contrôleurs qui traitent les requêtes.
+-Models : contient les classes représentant les données.
+-Views : contient les pages qui affichent les données.
+-wwwroot : contient les fichiers CSS, JavaScript et les images.
+
+Question 2:
+ASP.NET Core recherche la méthode Index() dans la classe FilmsController.
+
+Question 3: 
+Non, elle n'existe pas dans le projet initial. Si elle n'est pas créée, ASP.NET Core ne trouve pas le contrôleur correspondant et renvoie une erreur 404.
+
+
+
+Partie 2 - Afficher une liste
+
+Question 1:
+ASP.NET Core recherche le fichier Views/Films/Index.cshtml.
+
+Question 2: 
+Le routage a fonctionné, le contrôleur a été trouvé et la méthode Index() a été exécutée. Seule la vue est manquante.
+
+Question 3:
+films est une liste contenant trois objets de type Film : Alien, Dune et Interstellar.
+
+Question 4:
+Parce que le contrôleur transmet la liste à la vue grâce à View(films). La vue récupère ensuite cette liste avec Model.
+
+Question 5: 
+List<MvcFilms.Models.Film> : il s'agit d'une liste d'objets de type Film.
+
+
+
+Partie 3 - Mission 1: Enrichir la liste
+
+Question 1: J'ai modifié trois fichiers:
+- Film.cs pour ajouter la propriété Realisateur.
+- FilmsController.cs pour renseigner les réalisateurs et ajouter un quatrième film.
+- Index.cshtml pour afficher le titre, le réalisateur et l'année de chaque film.
+
+Les quatres films affichés sont Alien, Dune, Interstellar et Inception.
+
+
+
+Partie 4 - Mission 2: page de détails
+
+Question 1: 
+C'est le système de routage ASP.NET Core, grâce au segment {id?}.
+
+Question 2: 
+Il arrive dans le paramètre id de la méthode Details(int? id).
+
+Question 3:
+Parce que la page de détail affiche les informations d'un seul film, et non une liste de films.
+
+Question 4:
+On vérifie si id est égal à null. Si aucun identifiant n'est fourni, la méthode renvoie une erreur 404 avec NotFound().
+
+
+
+Partie 5 - Mission 3: filtrer par année
+
+Question 1:
+URL	                Résultat
+/Films/Apres/2000	Dune, Interstellar et Inception
+/Films/Apres/2020	Dune
+/Films/Apres/2030	Aucun film trouvé
+Le filtre utilise Where(f => f.Annee > id) pour sélectionner uniquement les films sortis strictement après l'année indiquée.
+
+
+
+Partie 6 - Bilan
