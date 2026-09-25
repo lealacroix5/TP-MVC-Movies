@@ -73,3 +73,40 @@ Le filtre utilise Where(f => f.Annee > id) pour sélectionner uniquement les fil
 
 
 Partie 6 - Bilan
+
+Comptéter le trajet de la requête /Films/Details/2:
+Navigateur
+    |
+    | GET /Films/Details/2
+    v
+Système de routage ASP.NET Core
+    |
+    | Controller = Films
+    | Action = Details
+    | id = 2
+    v
+FilmsController
+    |
+    v
+Méthode Details(int? id)
+    |
+    | Recherche du film demandé
+    v
+Objet Film
+    |
+    v
+View(film)
+    |
+    v
+Vue Details.cshtml
+    |
+    | Razor génère le HTML
+    v
+Page HTML
+    |
+    v
+Navigateur
+
+
+Question:
+Le routage, le contrôleur, les actions et les vues conservent leur rôle. C'est principalement la récupération des données qui change, puisque le contrôleur interroge une base de données au lieu d'une liste en mémoire.
