@@ -1,0 +1,32 @@
+
+@model List<MvcFilms.Models.Film>
+
+<h1>Films sortis après @ViewBag.Annee</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Aucun film trouvé pour cette période.</p>
+}
+else
+{
+    <ul>
+        @foreach (var film in Model)
+        {
+            <li>
+                @film.Titre —
+                @film.Realisateur —
+                @film.Annee
+
+                <a asp-controller="Films"
+                   asp-action="Details"
+                   asp-route-id="@film.Id">
+                    Détails
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+<a asp-controller="Films" asp-action="Index">
+    Retour à la liste
+</a>
